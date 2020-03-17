@@ -1,0 +1,45 @@
+/************
+20.03.17
+그리디
+:서류순위를 기준으로 오름차순 정렬한 후, 앞의 사람보다 면접 순위가 높아야 한다.
+면접순위 최솟값을 갱신하며 카운트 한다.
+**********/
+#include <stdio.h>
+#include<iostream>
+#include<algorithm>
+#include<string>
+#include<vector>
+using namespace std;
+
+
+
+
+int main() {
+
+	//freopen("input.txt", "r", stdin);
+	int t, n;
+	cin >> t;
+	for (int i = 0; i < t; i++) {
+		cin >> n;
+		vector<pair<int, int>> v;
+		for (int j = 0; j < n; j++) {
+			int a, b;
+			cin >> a >> b;
+			v.push_back(make_pair(a, b));
+		}
+		sort(v.begin(), v.end());
+
+		int result = 1; //서류성적 1등 count
+		int min = v[0].second;
+		for (int j = 1; j <n; j++) {
+			if (min > v[j].second) {
+				min = v[j].second;
+				result++;
+			}
+		}
+		cout << result << endl;
+	}
+
+	return 0;
+
+}

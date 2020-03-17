@@ -1,0 +1,34 @@
+/*******
+20.03.15
+그리디
+*********/
+
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+#include <stack>
+#include <queue>
+using namespace std;
+
+
+int main(void) {
+
+	//freopen("input.txt", "r", stdin);
+	int n;
+	vector <int> p;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		int a;
+		cin >> a;
+		p.push_back(a);
+	}
+
+	sort(p.begin(), p.end());
+
+	int sum = 0;
+	for (int i = 1; i <= n; i++) {
+		sum += p[n - i] * i;
+	}
+	cout << sum;
+	return 0;
+}

@@ -1,0 +1,48 @@
+/*************
+20.03.23
+그리디-활동선택문제
+-끝나는 시간 기준 오름차순 정렬
+*************/
+
+#include <iostream>
+#include <vector>
+#include <cstdio>
+#include <algorithm>
+#include <stack>
+#include <queue>
+using namespace std;
+
+
+pair<int, int> d[100000];
+
+bool compare(pair<int, int>  a, pair<int, int> b) {
+	if (a.second == b.second)
+		return a.first < b.first;
+	else
+		return a.second < b.second;
+}
+int main(void) {
+
+	//freopen("input.txt", "r", stdin);
+	int n;
+	cin >> n;
+	
+	for (int i = 0; i < n; i++) {
+		int start, end;
+		cin >> start >> end;
+		d[i] = make_pair(start, end);
+		
+	}
+	sort(d, d + n,compare);
+
+	int result = 0;
+	int endtime = 0;
+	for (int i = 0; i < n; i++) {
+		if (endtime <= d[i].first) {
+			result++;
+			endtime = d[i].second;
+		}
+	}
+	cout << result;
+	return 0;
+}

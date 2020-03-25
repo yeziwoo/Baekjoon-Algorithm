@@ -1,0 +1,14 @@
+/************
+20.03.25
+-아래처럼 간결하게 풀 수 있음
+************/
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int n, m, k;
+int main() {
+    cin>>n>>m>>k;
+    cout<< min( {(n + m - k) / 3,n / 2,m} );
+    return 0;
+}

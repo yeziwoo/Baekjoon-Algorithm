@@ -1,0 +1,50 @@
+/*********
+20.04.12.토
+-순열(사전적순서),재귀 
+	순열: 서로 다른 것들 중 몇개를 뽑아서 한 줄로 나열하는 것
+************/
+
+#include <iostream>
+#include<cstdio>
+#include<algorithm>
+
+using namespace std;
+
+int n;
+int a[9];
+void fac(int curridx) {  //curridx에 값 넣기 
+	if (curridx ==n) {
+		for (int i = 1; i <= n; i++) {
+			printf("%d ", a[i]);
+		}
+		printf("\n");
+		return;
+	}
+	
+	int beforeidx;
+	for (int x = 1; x <= n; x++) {
+
+		//x가 배열에 있는지 탐색 
+		for (beforeidx = 1; beforeidx <= curridx; beforeidx++) {
+			if (a[beforeidx] == x)
+				break;
+		}
+
+		//x가 배열에 없으면 
+		if (beforeidx == curridx + 1) {
+			a[curridx + 1] = x;
+			fac(curridx + 1);
+		}
+	}
+	return;
+}
+int main() {
+
+	cin >> n;
+	for (int x = 1; x <= n; x++) {
+		a[1] = x;
+		fac(1);
+	}
+
+	return 0;
+}
